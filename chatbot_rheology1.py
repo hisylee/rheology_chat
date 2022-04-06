@@ -50,17 +50,21 @@ if submitted and user_input:
     answer = df.loc[df['distance'].idxmax()]
 
     st.session_state.past.append(user_input)
-    if answer['distance'] < 0.5:
-        ans = '아직 적합한 대답을 학습하지 않았습니다. 더 공부하도록 할께요 ^^'
+    if answer['distance'] < 0.7:
+        ans = '어떻게 대답해야할 지 모르겠어요. 더 공부하도록 할께요 ㅠㅠ'
         st.session_state.generated.append(ans)
     else:
         st.session_state.generated.append(answer['A'])
 
 for i in range(len(st.session_state['past'])):
-     st.write(f"Q: {st.session_state['past'][i]}")
-     #st.write(st.session_state['past'][i])
-     if len(st.session_state['generated']) > i:
-         st.write(f"A: {st.session_state['generated'][i]}")
+    j = len(st.session_state['past']) - i - 1
+    st.write(f"Q: {st.session_state['past'][j]}")
+    st.write(f"A: {st.session_state['generated'][j]}")
+    st.markdown('==============================')
+
+    #st.write(st.session_state['past'][i])
+    #if len(st.session_state['generated']) > i:
+    #    st.write(f"A: {st.session_state['generated'][i]}")
 
 # for i in range(len(st.session_state['past'])):
 #     message(st.session_state['past'][i], is_user=True, key=str(i) + '_user')
