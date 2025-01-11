@@ -13,12 +13,14 @@ import json
 
 # pip list --format=freeze > requirements.txt
 
-@st.cache(allow_output_mutation=True)
+#@st.cache(allow_output_mutation=True)
+@st.cache_data
 def cached_model():
     model = SentenceTransformer('jhgan/ko-sroberta-multitask')
     return model
 
-@st.cache(allow_output_mutation=True)
+#@st.cache(allow_output_mutation=True)
+@st.cache_data
 def get_dataset():
     #df = pd.read_csv('rheology_dataset_em.csv')
     df = pd.read_excel('rheology_dataset_em.xlsx', header = 0)
