@@ -1,3 +1,4 @@
+altair==5.4.1
 huggingface-hub==0.14.1
 numpy==1.19.5
 openpyxl==3.0.9
